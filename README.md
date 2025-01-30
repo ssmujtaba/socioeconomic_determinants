@@ -14,3 +14,19 @@ The analysis was conducted using both SQL (MySQL) and Python.  The following ste
 
 ### 1. Data Cleaning and Preprocessing (Python)
 
+```
+Life Expectancy World Bank 188
+Prevelance of Undernourishment 684
+CO2 152
+Health Expenditure % 180
+Education Expenditure % 1090
+Unemployment 304
+Corruption 2331
+Sanitation 1247
+```
+
+* Missing values in the 'Life Expectancy', 'CO2', 'Health Expenditure', and 'Unemployment' columns were handled using median imputation.
+* Missing values in 'Prevalence of Undernourishment', 'Sanitation', and 'Education Expenditure' were imputed using KNN imputation.
+* The 'Corruption' column, with a high percentage of missing values, was removed.
+* A new feature, 'Spending Category', was engineered based on 'Health Expenditure %' quartiles, categorized as 'Low Spending', 'Moderate Spending', 'High Spending', and 'Very High Spending'.
+
