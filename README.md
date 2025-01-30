@@ -14,9 +14,8 @@ The analysis was conducted using both SQL (MySQL) and Python.  The following ste
 
 ### 1. Data Cleaning and Preprocessing (Python)
 
+# **Missing Values**
 ```
-#**Missing Values**
-
 Life Expectancy World Bank 188
 Prevelance of Undernourishment 684
 CO2 152
