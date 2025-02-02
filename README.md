@@ -612,3 +612,239 @@ Cuba tops the region with an average health expenditure of 10.15%, reflecting it
 
 * Limited Scope: The data only covers a single year-over-year change. To understand broader trends, it would be necessary to analyze data over a longer period.
 
+# **6. Running average of LifeExpectancy over the years for each country using a window function.**
+
+**Key Skills Demonstrated:**
+
+* Window Function Expertise: Masterfully applied window functions to calculate running averages, showcasing advanced SQL skills beyond basic aggregation.
+* Precise Data Handling: Utilized partitioning and ordering within the window function to accurately track life expectancy trends over time on a per-country basis.
+* Effective Trend Analysis: Enabled the analysis of life expectancy trends by calculating running averages, providing a clearer view of long-term patterns compared to raw yearly data.
+
+**output**
+| CountryName | Year | LifeExpectancy | RunningAvgLifeExpectancy |
+|---|---|---|---|
+| Angola | 2001 | 47.059 | 47.06 |
+| Antigua and Barbuda | 2001 | 74.171 | 74.17 |
+| Argentina | 2001 | 73.755 | 73.75 |
+| Armenia | 2001 | 71.8 | 71.8 |
+| Australia | 2001 | 79.6341 | 79.63 |
+| Austria | 2001 | 78.5756 | 78.58 |
+| Azerbaijan | 2001 | 67.054 | 67.05 |
+| Bahrain | 2001 | 74.635 | 74.64 |
+| Bangladesh | 2001 | 65.956 | 65.96 |
+| Barbados | 2001 | 77.362 | 77.36 |
+| Belarus | 2001 | 68.5073 | 68.51 |
+| Belgium | 2001 | 77.9732 | 77.97 |
+| Belize | 2001 | 69.04 | 69.04 |
+| Benin | 2001 | 55.668 | 55.67 |
+| Bermuda | 2001 | 77.8854 | 77.89 |
+| Bhutan | 2001 | 61.808 | 61.81 |
+| Bolivia | 2001 | 63.054 | 63.05 |
+| Bosnia and Herzegovina | 2001 | 74.637 | 74.64 |
+| Botswana | 2001 | 50.281 | 50.28 |
+| Brazil | 2001 | 70.462 | 70.46 |
+| Bulgaria | 2001 | 71.7683 | 71.77 |
+| Burkina Faso | 2001 | 50.893 | 50.89 |
+| Burundi | 2001 | 49.93 | 49.93 |
+| Cambodia | 2001 | 59.335 | 59.33 |
+| Cameroon | 2001 | 51.222 | 51.22 |
+| Canada | 2001 | 79.339 | 79.34 |
+| Central African Republic | 2001 | 44.061 | 44.06 |
+| Chad | 2001 | 47.789 | 47.79 |
+| Chile | 2001 | 76.634 | 76.63 |
+| China | 2001 | 71.732 | 71.73 |
+| Colombia | 2001 | 73.241 | 73.24 |
+| Comoros | 2001 | 59.529 | 59.53 |
+| Costa Rica | 2001 | 77.601 | 77.6 |
+| Cote d'Ivoire | 2001 | 49.495 | 49.49 |
+| Croatia | 2001 | 74.5129 | 74.51 |
+| Cuba | 2001 | 76.905 | 76.9 |
+| Cyprus | 2001 | 78.139 | 78.14 |
+| Denmark | 2001 | 76.7927 | 76.79 |
+| Djibouti | 2001 | 57.1 | 57.1 |
+| Dominica | 2001 |  |  |
+| Dominican Republic | 2001 | 69.69 | 69.69 |
+| Ecuador | 2001 | 73.078 | 73.08 |
+| El Salvador | 2001 | 69.162 | 69.16 |
+| Equatorial Guinea | 2001 | 53.581 | 53.58 |
+| Eritrea | 2001 | 55.864 | 55.86 |
+| Estonia | 2001 | 70.2585 | 70.26 |
+| Eswatini | 2001 | 45.799 | 45.8 |
+| Ethiopia | 2001 | 52.595 | 52.6 |
+| Fiji | 2001 | 65.863 | 65.86 |
+| Finland | 2001 | 77.9659 | 77.97 |
+| France | 2001 | 79.1585 | 79.16 |
+| Gabon | 2001 | 57.968 | 57.97 |
+| Georgia | 2001 | 70.065 | 70.07 |
+| Germany | 2001 | 78.3293 | 78.33 |
+| Ghana | 2001 | 57.158 | 57.16 |
+| Greece | 2001 | 78.3878 | 78.39 |
+| Greenland | 2001 | 66.7093 | 66.71 |
+| Grenada | 2001 | 72.805 | 72.81 |
+| Guam | 2001 | 75.373 | 75.37 |
+| Guatemala | 2001 | 68.304 | 68.3 |
+| Guinea | 2001 | 51.255 | 51.26 |
+| Guinea-Bissau | 2001 | 50.744 | 50.74 |
+| Guyana | 2001 | 65.532 | 65.53 |
+| Haiti | 2001 | 57.382 | 57.38 |
+| Honduras | 2001 | 70.976 | 70.98 |
+| Hungary | 2001 | 72.2488 | 72.25 |
+| Iceland | 2001 | 80.6902 | 80.69 |
+| India | 2001 | 62.907 | 62.91 |
+| Indonesia | 2001 | 66.037 | 66.04 |
+| Iraq | 2001 | 68.983 | 68.98 |
+| Ireland | 2001 | 77.1341 | 77.13 |
+| Israel | 2001 | 79.4073 | 79.41 |
+| Italy | 2001 | 80.1268 | 80.13 |
+| Jamaica | 2001 | 74.139 | 74.14 |
+| Japan | 2001 | 81.4171 | 81.42 |
+| Jordan | 2001 | 71.907 | 71.91 |
+| Kazakhstan | 2001 | 65.76 | 65.76 |
+| Kenya | 2001 | 51.101 | 51.1 |
+| Kiribati | 2001 | 63.446 | 63.45 |
+| Kuwait | 2001 | 73.21 | 73.21 |
+
+# **Insight**
+
+* **Overall Trend:**  The RunningAvgLifeExpectancy column likely shows how life expectancy is generally increasing over time for many countries. This is because a running average smooths out year-to-year fluctuations, revealing the underlying long-term trend.
+
+* **Country-Specific Trends:** By looking at how the RunningAvgLifeExpectancy changes for each country, we can see which countries have experienced significant improvements in life expectancy and identify any periods of stagnation or decline.
+
+* **Comparison Between Countries:**  Comparing the RunningAvgLifeExpectancy across different countries allows us to see which countries have higher or lower life expectancies and how these differences have evolved over time.
+
+# **7. Ranking Countries within its Region based on CO2 emissions using the RANK() window function**.
+
+**Key Skills Demonstrated:**
+
+* Data Aggregation and Ranking: Combined aggregate functions (AVG()) with window functions (RANK()) to rank countries by average CO2 emissions within their respective regions.
+* Regional Analysis: Used PARTITION BY to perform analysis within geographic regions, enabling comparisons and ranking of countries within specific contexts.
+* Insightful Ranking: Generated a ranking of countries by CO2 emissions, providing valuable information for understanding regional and global emission patterns.
+
+**Output**
+| countryname | region | Avg CO2 Emissions | Ranking of Emissions |
+|---|---|---|---|
+|  |  |  | 1 |
+| China | East Asia & Pacific | 7862437.86 | 1 |
+| Japan | East Asia & Pacific | 1183793.67 | 2 |
+| Indonesia | East Asia & Pacific | 427685.79 | 3 |
+| Australia | East Asia & Pacific | 377437.37 | 4 |
+| Thailand | East Asia & Pacific | 232332.63 | 5 |
+| Malaysia | East Asia & Pacific | 197462.11 | 6 |
+| Vietnam | East Asia & Pacific | 154021.58 | 7 |
+| Philippines | East Asia & Pacific | 92639.47 | 8 |
+| Singapore | East Asia & Pacific | 42386.32 | 9 |
+| New Zealand | East Asia & Pacific | 32452.11 | 10 |
+| Myanmar | East Asia & Pacific | 15065.26 | 11 |
+| Mongolia | East Asia & Pacific | 14942.11 | 12 |
+| Cambodia | East Asia & Pacific | 6264.21 | 13 |
+| Papua New Guinea | East Asia & Pacific | 5457.89 | 14 |
+| Fiji | East Asia & Pacific | 1254.74 | 15 |
+| Solomon Islands | East Asia & Pacific | 330.00 | 16 |
+| Palau | East Asia & Pacific | 228.95 | 17 |
+| Samoa | East Asia & Pacific | 215.26 | 18 |
+| Marshall Islands | East Asia & Pacific | 144.21 | 19 |
+| Tonga | East Asia & Pacific | 129.47 | 20 |
+| Vanuatu | East Asia & Pacific | 124.74 | 21 |
+| Kiribati | East Asia & Pacific | 61.05 | 22 |
+| Nauru | East Asia & Pacific | 56.32 | 23 |
+| Tuvalu | East Asia & Pacific | 10.00 | 24 |
+| Guam | East Asia & Pacific |  | 25 |
+| American Samoa | East Asia & Pacific |  | 25 |
+| Northern Mariana Islands | East Asia & Pacific |  | 25 |
+| Germany | Europe & Central Asia | 770663.69 | 1 |
+| United Kingdom | Europe & Central Asia | 467431.05 | 2 |
+| Italy | Europe & Central Asia | 397458.42 | 3 |
+| France | Europe & Central Asia | 343980.52 | 4 |
+| Poland | Europe & Central Asia | 301864.74 | 5 |
+| Spain | Europe & Central Asia | 288681.58 | 6 |
+| Ukraine | Europe & Central Asia | 261663.69 | 7 |
+| Kazakhstan | Europe & Central Asia | 199282.63 | 8 |
+| Netherlands | Europe & Central Asia | 161187.37 | 9 |
+| Uzbekistan | Europe & Central Asia | 118143.68 | 10 |
+| Belgium | Europe & Central Asia | 102268.42 | 11 |
+| Greece | Europe & Central Asia | 85068.95 | 12 |
+| Romania | Europe & Central Asia | 84458.42 | 13 |
+| Austria | Europe & Central Asia | 68211.58 | 14 |
+| Turkmenistan | Europe & Central Asia | 60523.68 | 15 |
+| Belarus | Europe & Central Asia | 57167.37 | 16 |
+| Finland | Europe & Central Asia | 54872.63 | 17 |
+| Portugal | Europe & Central Asia | 54478.42 | 18 |
+| Hungary | Europe & Central Asia | 49418.95 | 19 |
+| Serbia | Europe & Central Asia | 48153.68 | 20 |
+| Bulgaria | Europe & Central Asia | 45192.63 | 21 |
+| Sweden | Europe & Central Asia | 44859.47 | 22 |
+| Denmark | Europe & Central Asia | 44792.11 | 23 |
+| Switzerland | Europe & Central Asia | 42468.42 | 24 |
+| Ireland | Europe & Central Asia | 40865.79 | 25 |
+| Norway | Europe & Central Asia | 37727.37 | 26 |
+| Azerbaijan | Europe & Central Asia | 29613.68 | 27 |
+| Bosnia and Herzegovina | Europe & Central Asia | 19438.42 | 28 |
+| Croatia | Europe & Central Asia | 19113.68 | 29 |
+| Estonia | Europe & Central Asia | 16631.05 | 30 |
+| Slovenia | Europe & Central Asia | 15076.84 | 31 |
+| Lithuania | Europe & Central Asia | 11829.47 | 32 |
+| Luxembourg | Europe & Central Asia | 10276.32 | 33 |
+| North Macedonia | Europe & Central Asia | 8574.74 | 34 |
+| Moldova | Europe & Central Asia | 7954.21 | 35 |
+| Latvia | Europe & Central Asia | 7657.89 | 36 |
+| Cyprus | Europe & Central Asia | 7496.84 | 37 |
+| Georgia | Europe & Central Asia | 6402.11 | 38 |
+| Armenia | Europe & Central Asia | 4840.53 | 39 |
+| Albania | Europe & Central Asia | 4362.63 | 40 |
+| Tajikistan | Europe & Central Asia | 3958.42 | 41 |
+| Montenegro | Europe & Central Asia | 2205.79 | 42 |
+| Iceland | Europe & Central Asia | 2038.42 | 43 |
+| Andorra | Europe & Central Asia | 511.05 | 44 |
+| Monaco | Europe & Central Asia |  | 45 |
+| San Marino | Europe & Central Asia |  | 45 |
+| Greenland | Europe & Central Asia |  | 45 |
+| Mexico | Latin America & Caribbean | 448063.68 | 1 |
+| Brazil | Latin America & Caribbean | 397163.15 | 2 |
+| Argentina | Latin America & Caribbean | 161945.79 | 3 |
+| Chile | Latin America & Caribbean | 70095.26 | 4 |
+| Colombia | Latin America & Caribbean | 67377.89 | 5 |
+| Peru | Latin America & Caribbean | 42608.42 | 6 |
+| Ecuador | Latin America & Caribbean | 34036.32 | 7 |
+| Cuba | Latin America & Caribbean | 27083.16 | 8 |
+| Dominican Republic | Latin America & Caribbean | 21372.63 | 9 |
+| Trinidad and Tobago | Latin America & Caribbean | 18705.79 | 10 |
+| Bolivia | Latin America & Caribbean | 15517.37 | 11 |
+| Guatemala | Latin America & Caribbean | 13180.53 | 12 |
+| Jamaica | Latin America & Caribbean | 8898.42 | 13 |
+| Panama | Latin America & Caribbean | 8763.68 | 14 |
+| Honduras | Latin America & Caribbean | 8437.37 | 15 |
+| Costa Rica | Latin America & Caribbean | 7153.68 | 16 |
+
+* Regional Disparities:  It's clear that CO2 emissions vary significantly across regions.  For example, 'East Asia & Pacific' has some of the highest emitters like China, while 'Sub-Saharan Africa' has many countries with much lower emissions. This highlights the unequal distribution of emissions globally.
+
+* Regional Leaders:  Within each region, you can identify the top emitters. This allows for targeted analysis of major polluters within specific geographic contexts. For example, Germany leads in 'Europe & Central Asia', while the United States is the top emitter in 'North America'.
+
+* Data Gaps: The presence of NULL values for some countries indicates missing data, which could impact the accuracy of regional comparisons and rankings. It's important to acknowledge these limitations.
+
+# **8. Conditional Logic using case statements to categorize countries into different groups based on their LifeExpectancy**
+
+**Key Skills Demonstrated**
+
+* Data Categorization: Effectively used CASE statements to categorize countries based on life expectancy ranges, demonstrating the ability to transform continuous data into meaningful groups.
+* Logical Condition Handling: Applied logical conditions within CASE statements to assign countries to different categories, showcasing conditional logic handling in SQL.
+* Data Interpretation: Facilitated the interpretation of life expectancy data by creating clear categories, making it easier to understand and analyze global health patterns.
+
+**Output**
+| countryname | Life Expectancy Category |
+|---|---|
+| Afghanistan | Low |
+| Angola | High |
+| Albania | High |
+| Andorra | High |
+| United Arab Emirates | High |
+| Argentina | High |
+| Armenia | High |
+| American Samoa | High |
+| Antigua and Barbuda | High |
+| Australia | High |
+
+# **Insight**
+
+* General Health and Development: The categorization provides a quick and easy way to understand the general health and development status of countries. Countries in the 'High' category likely have better healthcare systems, nutrition, and overall living conditions compared to those in the 'Low' category.
+
+* Potential Outliers:  It's interesting to note that some countries like Angola and Antigua and Barbuda are categorized as 'High' despite potentially facing economic or development challenges. This could indicate areas for further investigation to understand the factors contributing to their higher life expectancy.
