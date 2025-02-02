@@ -179,3 +179,143 @@ This pattern suggests a strong correlation between a nation's wealth and the ave
 
 * Outliers in **'Very High' Spending:** The presence of outliers in the 'Very High' spending category is particularly noteworthy and warrants further investigation to understand the reasons behind the lower life expectancy.
 
+# **4. Statistical Analysis**
+
+![output6](https://github.com/user-attachments/assets/85fb98de-394b-4988-af2f-718be360c916)
+
+# **Insight**
+
+## **Key Observations:**
+
+1. **Strong Positive Correlations:**
+
+* Life Expectancy World Bank has a strong positive correlation with Health Expenditure % (0.29) and Education Expenditure % (0.18). This suggests that higher spending on healthcare and education is associated with increased life expectancy.
+
+* Sanitation has a moderate positive correlation with Life Expectancy World Bank (0.53). This indicates that better sanitation practices are linked to improved life expectancy.
+
+* There are strong positive correlations between CO2 emissions and several variables, including Injuries (0.95), NonCommunicable (0.82), and Health Expenditure % (0.11). This suggests that higher CO2 emissions are associated with increased injuries, noncommunicable diseases, and healthcare spending.
+
+2. **Strong Negative Correlations:**
+
+* Prevelance of Undernourishment has strong negative correlations with Life Expectancy World Bank (-0.62), Health Expenditure % (-0.19), and Education Expenditure % (-0.24). This indicates that higher levels of undernourishment are associated with lower life expectancy, lower healthcare spending, and lower education expenditure.
+
+* Sanitation has a strong negative correlation with Prevelance of Undernourishment (-0.48). This suggests that better sanitation practices are associated with lower levels of undernourishment.
+
+3. **Other Notable Relationships:**
+
+* There's a moderate positive correlation between Health Expenditure % and Education Expenditure % (0.32), suggesting that countries with higher healthcare spending also tend to invest more in education.
+
+* Injuries have strong positive correlations with Communicable (0.77) and NonCommunicable (0.95) diseases, indicating a link between injuries and these types of diseases.
+
+**Overall Analysis**:
+
+* Life Expectancy: As expected, life expectancy is positively associated with healthcare expenditure and education, and negatively associated with undernourishment.
+
+* Healthcare and Education: There's a moderate positive relationship between healthcare and education expenditure, suggesting that countries investing in one often invest in the other.
+
+* Environmental Factors: CO2 emissions have complex relationships with various health outcomes, suggesting potential negative environmental impacts on health.
+
+* Sanitation and Undernourishment: Better sanitation is associated with improved life expectancy and lower undernourishment, highlighting the importance of basic infrastructure for health.
+
+# **Important Considerations:**
+
+* Correlation does not imply causation: While the heatmap reveals associations between variables, it doesn't prove causality. Further analysis is needed to establish causal relationships.
+
+* Multicollinearity: Some variables, such as Health Expenditure % and Education Expenditure %, have moderate correlations with each other. This can affect the interpretation of regression models and may require further consideration.
+
+
+# **Linear Regression Analysis**
+
+<table style="text-align:center"><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="1"><em>Dependent variable: Q("Life Expectancy World Bank")</em></td></tr><tr><td style="text-align:left"></td><tr><td style="text-align:left"></td><td>(1)</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr>
+
+<tr><td style="text-align:left">CO2</td><td>0.000<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.000)</td></tr>
+<tr><td style="text-align:left">Intercept</td><td>62.149<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.470)</td></tr>
+<tr><td style="text-align:left">Q("Education Expenditure %")</td><td>0.549<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.088)</td></tr>
+<tr><td style="text-align:left">Q("Health Expenditure %")</td><td>0.800<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.058)</td></tr>
+
+<td colspan="2" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align: left">Observations</td><td>3306</td></tr><tr><td style="text-align: left">R<sup>2</sup></td><td>0.102</td></tr><tr><td style="text-align: left">Adjusted R<sup>2</sup></td><td>0.101</td></tr><tr><td style="text-align: left">Residual Std. Error</td><td>8.679 (df=3302)</td></tr><tr><td style="text-align: left">F Statistic</td><td>124.790<sup>***</sup> (df=3; 3302)</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align: left">Note:</td><td colspan="1" style="text-align: right"><sup>*</sup>p&lt;0.1; <sup>**</sup>p&lt;0.05; <sup>***</sup>p&lt;0.01</td></tr></table>
+
+# **Interpretation of the Regression Analysis**
+
+**Key Findings:**
+
+* Health Expenditure: A 1% increase in health expenditure (as % of GDP) is associated with a 0.800 unit increase in life expectancy, holding other factors constant. This effect is statistically significant (p<0.01).
+
+* Education Expenditure: A 1% increase in education expenditure (as % of GDP) is associated with a 0.549 unit increase in life expectancy, holding other factors constant. This effect is also statistically significant (p<0.01).
+
+* CO2 Emissions: A 1 unit increase in CO2 emissions is associated with a very small (0.000) but statistically significant (p<0.01) increase in life expectancy. This might seem counterintuitive, but it's important to remember that correlation doesn't equal causation, and this relationship could be influenced by other factors not included in the model.
+
+* Model Fit: The R-squared value of 0.102 indicates that the model explains about 10.2% of the variation in life expectancy. This suggests that other factors not included in the model also play a significant role in determining life expectancy.
+
+# **5. Time Series Analysis**
+
+![image](https://github.com/user-attachments/assets/d71d3c6d-4181-48fd-b159-11f47813ae36)
+
+# **Interpretation of the Time Series Trend Analysis**
+
+# **1. Trend:**
+
+* The trend component shows a clear upward trajectory in life expectancy over the years, indicating a long-term increase.
+
+* This suggests that overall, life expectancy has been consistently improving.
+
+# **2. Seasonality:**
+
+* The seasonality component is relatively flat, indicating minimal seasonal variation in life expectancy.
+
+* This means that life expectancy does not exhibit any significant fluctuations throughout the year.
+
+# **3. Residuals:**
+
+* The residuals appear to be random and centered around zero, suggesting that there's no significant underlying pattern left unexplained by the trend component.
+
+# **Overall Interpretation**
+
+* The analysis suggests that the primary driver of the increase in life expectancy over time is a long-term trend, rather than seasonal fluctuations.
+
+* This finding is consistent with the earlier analysis that showed a positive relationship between life expectancy and various socio-economic factors, which likely contribute to the overall upward trend.
+
+# **Forecasting of Life Expectancy**
+
+![image](https://github.com/user-attachments/assets/3674c9ab-6502-4dc5-9926-0b36edcec541)
+
+#**Interpretation of the Life Expectancy Forecast:**
+
+#**Overall Trend:**
+
+* The forecast suggests that global average life expectancy is expected to continue increasing over the next 10 years (from 2019 to 2028).
+
+
+* This is indicated by the red forecast line, which shows a gradual upward slope.
+
+# **Historical Data:**
+
+* The blue dots represent the average global life expectancy for each year from 2001 to 2019.
+
+* While there's a general upward trend in the historical data, it's important to remember that these are yearly averages, and the plot doesn't show any within-year variations. (The reason for this is because the data is yearly, not montly or quartlery, hence no variation).
+
+# **Confidence Intervals:**
+
+* The shaded pink area around the forecast line represents the confidence intervals. This indicates the range within which the actual life expectancy is likely to fall with a certain degree of confidence (typically 95%).
+
+* The width of the confidence intervals increases as we move further into the future, reflecting the increasing uncertainty of the forecast over longer time horizons.
+
+# **Specific Predictions:**
+
+* Based on the forecast, average global life expectancy is projected to reach around 73.5 years by 2028.
+
+* The 95% confidence interval for this prediction ranges from approximately 72.5 to 74.5 years.
+
+* This suggests a high probability that life expectancy will continue to improve, but the exact magnitude of the increase is uncertain.
+
+
+
+
