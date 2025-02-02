@@ -179,6 +179,8 @@ This pattern suggests a strong correlation between a nation's wealth and the ave
 
 * Outliers in **'Very High' Spending:** The presence of outliers in the 'Very High' spending category is particularly noteworthy and warrants further investigation to understand the reasons behind the lower life expectancy.
 
+---
+
 # **4. Statistical Analysis**
 
 ![output6](https://github.com/user-attachments/assets/85fb98de-394b-4988-af2f-718be360c916)
@@ -255,6 +257,8 @@ This pattern suggests a strong correlation between a nation's wealth and the ave
 
 * Model Fit: The R-squared value of 0.102 indicates that the model explains about 10.2% of the variation in life expectancy. This suggests that other factors not included in the model also play a significant role in determining life expectancy.
 
+---
+
 # **5. Time Series Analysis**
 
 ![image](https://github.com/user-attachments/assets/d71d3c6d-4181-48fd-b159-11f47813ae36)
@@ -287,9 +291,9 @@ This pattern suggests a strong correlation between a nation's wealth and the ave
 
 ![image](https://github.com/user-attachments/assets/3674c9ab-6502-4dc5-9926-0b36edcec541)
 
-#**Interpretation of the Life Expectancy Forecast:**
+# **Interpretation of the Life Expectancy Forecast:**
 
-#**Overall Trend:**
+# **Overall Trend:**
 
 * The forecast suggests that global average life expectancy is expected to continue increasing over the next 10 years (from 2019 to 2028).
 
@@ -316,6 +320,295 @@ This pattern suggests a strong correlation between a nation's wealth and the ave
 
 * This suggests a high probability that life expectancy will continue to improve, but the exact magnitude of the increase is uncertain.
 
+### This concludes the analysis of the dataset using Python. Please note that libraries such as Pandas, NumPy, Seaborn, Matplotlib and Statsmodel. In the next part, I will provide the analysis using SQL on my dataset.
+---
 
+# **1. Data Loading and Table Creation**
 
+# CountryName, CountryCode, Region, IncomeGroup, Year, LifeExpectancy, Undernourishment, CO2, HealthExpenditure, EducationExpenditure, Unemployment, Corruption, Sanitation, Injuries, Communicable, NonCommunicable
+
+| CountryName | CountryCode | Region | IncomeGroup | Year | LifeExpectancy | Undernourishment | CO2 | HealthExpenditure | EducationExpenditure | Unemployment | Corruption | Sanitation | Injuries | Communicable | NonCommunicable |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Afghanistan | AFG | South Asia | Low income | 2001 | 56.308 | 47.8 | 730.0000 |  |  | 10.8090 |  |  | 2179727.1000 | 9689193.7000 | 5795426.3800 |
+| Angola | AGO | Sub-Saharan Africa | Lower middle income | 2001 | 47.059 | 67.5 | 15960.0000 | 4.4835 |  | 4.0040 |  |  | 1392080.7100 | 11190210.5300 | 2663516.3400 |
+| Albania | ALB | Europe & Central Asia | Upper middle income | 2001 | 74.288 | 4.9 | 3230.0000 | 7.1395 | 3.4587 | 18.5750 |  | 40.5209 | 117081.6700 | 140894.7800 | 532324.7500 |
+| Andorra | AND | Europe & Central Asia | High income | 2001 |  |  | 520.0000 | 5.8659 |  |  |  | 21.7887 | 1697.9900 | 695.5600 | 13636.6400 |
+| United Arab Emirates | ARE | Middle East & North Africa | High income | 2001 | 74.544 | 2.8 | 97200.0000 | 2.4844 |  | 2.4930 |  |  | 144678.1400 | 65271.9100 | 481740.7000 |
+| Argentina | ARG | Latin America & Caribbean | Upper middle income | 2001 | 73.755 | 3 | 125260.0000 | 8.3718 | 4.8337 | 17.3200 |  | 48.0540 | 1397676.0700 | 1507068.9800 | 8070909.5200 |
+| Armenia | ARM | Europe & Central Asia | Upper middle income | 2001 | 71.8 | 26.1 | 3600.0000 | 4.6456 | 2.4694 | 10.9120 |  | 46.3519 | 103371.7500 | 122238.1300 | 767916.1900 |
+| American Samoa | ASM | East Asia & Pacific | Upper middle income | 2001 |  |  |  |  |  |  |  |  | 1683.9800 | 2933.9800 | 10752.1300 |
+| Antigua and Barbuda | ATG | Latin America & Caribbean | High income | 2001 | 74.171 |  | 350.0000 | 5.4359 |  |  |  |  | 2201.1200 | 3279.7200 | 14289.6900 |
+| Australia | AUS | East Asia & Pacific | High income | 2001 | 79.6341 | 2.5 | 345640.0000 | 7.6962 |  | 6.7400 |  | 58.7889 | 612233.8100 | 208282.7300 | 4158052.8600 |
+
+**Output**
+
+* The output shows the first few rows of the economic_info table after loading the data from the CSV file. Here’s a sample of the output:
+
+* The economic_info table was successfully created and populated with data from the life_expectancy.csv file. The table includes columns for various socioeconomic indicators such as life expectancy, undernourishment, CO2 emissions, health expenditure, education expenditure, unemployment, corruption, sanitation, injuries, communicable diseases, and non-communicable diseases.
+
+* The LOAD DATA INFILE statement was used to load the data, and the NULLIF function was applied to handle missing values in the dataset. For example, missing values in columns like LifeExpectancy, HealthExpenditure, and Corruption were replaced with NULL to ensure data integrity.
+
+* The output shows a snapshot of the data, highlighting the diversity of countries, regions, and income groups. For instance:
+
+* Afghanistan (Low income) has a life expectancy of 56.3 years and a high undernourishment rate of 47.8%.
+
+* Albania (Upper middle income) has a higher life expectancy of 74.3 years and lower undernourishment (4.9%), reflecting better socioeconomic conditions.
+
+* Andorra (High income) has missing data for life expectancy and undernourishment but shows relatively high health expenditure (5.87%).
+
+# **2. Backup Table Creation and Updates**
+
+**Insight**
+
+* A backup of the economic_info table was created as economic_info_backup to preserve the original data.
+
+* The IncomeGroup column in the backup table was updated based on conditions involving AvgLifeExpectancy and TotalCO2 from the CountryStats table. This demonstrates the use of conditional logic (CASE statement) to dynamically categorize countries into income groups based on their life expectancy and CO2 emissions.
+
+**For example:**
+
+* Countries with an average life expectancy below 50 years and total CO2 emissions below 1000 were categorized as Low Income.
+
+* Countries with an average life expectancy between 50 and 60 years and total CO2 emissions below 2000 were categorized as Lower Middle Income.
+
+* This approach ensures that the income group classification is aligned with the latest socioeconomic indicators.
+
+# **3. Identifying Countries with Above-Average Life Expectancy**
+
+**Key Skills Demonstrated:**
+
+* Use of CTEs for modular and efficient query design.
+* Data aggregation and filtering to extract meaningful insights.
+* Joins and conditional logic to compare data across tables.
+
+**OUtput**
+| countryname | avg_life | year |
+|---|---|---|
+| Lesotho | 47.11 | 2018 |
+| Lesotho | 47.11 | 2016 |
+| Lesotho | 47.11 | 2012 |
+| Lesotho | 47.11 | 2014 |
+| Lesotho | 47.11 | 2015 |
+| Lesotho | 47.11 | 2013 |
+| Lesotho | 47.11 | 2017 |
+| Lesotho | 47.11 | 2019 |
+| Central African Republic | 47.86 | 2012 |
+| Central African Republic | 47.86 | 2017 |
+| Central African Republic | 47.86 | 2014 |
+| Central African Republic | 47.86 | 2019 |
+| Central African Republic | 47.86 | 2015 |
+| Central African Republic | 47.86 | 2016 |
+| Central African Republic | 47.86 | 2011 |
+| Central African Republic | 47.86 | 2013 |
+| Central African Republic | 47.86 | 2018 |
+| Sierra Leone | 48.64 | 2011 |
+| Sierra Leone | 48.64 | 2012 |
+| Sierra Leone | 48.64 | 2017 |
+| Sierra Leone | 48.64 | 2014 |
+| Sierra Leone | 48.64 | 2016 |
+| Sierra Leone | 48.64 | 2015 |
+| Sierra Leone | 48.64 | 2013 |
+| Sierra Leone | 48.64 | 2010 |
+| Sierra Leone | 48.64 | 2019 |
+| Sierra Leone | 48.64 | 2018 |
+| Eswatini | 49.18 | 2014 |
+| Eswatini | 49.18 | 2012 |
+| Eswatini | 49.18 | 2016 |
+
+* The table shows shows countries with above-average life expectancy for their respective income groups in specific years. Here’s a sample of the output.
+
+# **Insight**
+
+**Objective**: The query identifies countries where the life expectancy in a specific year is above the average life expectancy for that country across all years. This helps in understanding which countries performed better than their historical average in terms of life expectancy.
+
+**Key Findings:**
+
+* Lesotho: The average life expectancy for Lesotho is 47.11 years, and the output shows multiple years where the life expectancy exceeded this average. This indicates that Lesotho has made some progress in improving life expectancy, though it remains low compared to global standards.
+
+* Central African Republic: With an average life expectancy of 47.86 years, the country also shows several years where life expectancy was above this average. This suggests some improvement in health outcomes, though challenges remain.
+
+* Sierra Leone: The average life expectancy is 48.64 years, and the output shows consistent years where life expectancy exceeded this average. This reflects gradual improvements in healthcare and living conditions.
+
+* Eswatini: With an average life expectancy of 49.18 years, Eswatini also shows years where life expectancy was above average, indicating positive trends in health and socioeconomic conditions.
+
+**Trends:**
+
+* The countries listed in the output are primarily from Sub-Saharan Africa, a region historically challenged by low life expectancy due to factors such as poverty, disease, and limited access to healthcare.
+
+* Despite these challenges, the results show that these countries have had years where life expectancy improved, suggesting that targeted interventions (e.g., healthcare investments, disease prevention programs) may have had a positive impact.
+
+**Limitations:**
+
+* The analysis is based on historical averages, so it doesn’t account for external factors (e.g., epidemics, economic crises) that may have influenced life expectancy in specific years.
+
+* The results highlight countries with low life expectancy, so further analysis is needed to understand the drivers of improvement and how these trends compare to global benchmarks.
+
+# **4. Ranking Countries by Health Expenditure**
+
+**Key Skills Demonstrated:**
+
+* Use of CTEs for modular and efficient query design.
+* Advanced ranking with window functions (RANK() and PARTITION BY).
+* Data aggregation and sorting to extract meaningful insights.
+
+**Output**
+| countryname | region | avg_health_expenditure | rnk |
+|---|---|---|---|
+|  |  |  | 1 |
+| Marshall Islands | East Asia & Pacific | 16.70305789 | 1 |
+| Tuvalu | East Asia & Pacific | 15.53382632 | 2 |
+| Nauru | East Asia & Pacific | 12.13936842 | 3 |
+| Kiribati | East Asia & Pacific | 10.79040000 | 4 |
+| Palau | East Asia & Pacific | 10.69863158 | 5 |
+| Japan | East Asia & Pacific | 9.20888947 | 6 |
+| New Zealand | East Asia & Pacific | 8.90035789 | 7 |
+| Australia | East Asia & Pacific | 8.56964211 | 8 |
+| Cambodia | East Asia & Pacific | 6.68654737 | 9 |
+| Solomon Islands | East Asia & Pacific | 6.30735263 | 10 |
+| Samoa | East Asia & Pacific | 5.24047895 | 11 |
+| Tonga | East Asia & Pacific | 4.69134211 | 12 |
+| China | East Asia & Pacific | 4.50154211 | 13 |
+| Vietnam | East Asia & Pacific | 4.44452632 | 14 |
+| Mongolia | East Asia & Pacific | 4.00740526 | 15 |
+| Philippines | East Asia & Pacific | 3.74024737 | 16 |
+| Singapore | East Asia & Pacific | 3.52774211 | 17 |
+| Vanuatu | East Asia & Pacific | 3.48903684 | 18 |
+| Thailand | East Asia & Pacific | 3.46133684 | 19 |
+| Malaysia | East Asia & Pacific | 3.27918947 | 20 |
+| Fiji | East Asia & Pacific | 3.27800000 | 21 |
+| Myanmar | East Asia & Pacific | 3.12832105 | 22 |
+| Indonesia | East Asia & Pacific | 2.67184737 | 23 |
+| Papua New Guinea | East Asia & Pacific | 2.42980000 | 24 |
+| American Samoa | East Asia & Pacific |  | 25 |
+| Guam | East Asia & Pacific |  | 25 |
+| Northern Mariana Islands | East Asia & Pacific |  | 25 |
+| France | Europe & Central Asia | 10.83386842 | 1 |
+| Germany | Europe & Central Asia | 10.75399474 | 2 |
+| Switzerland | Europe & Central Asia | 10.30450000 | 3 |
+| Austria | Europe & Central Asia | 9.97465263 | 4 |
+| Belgium | Europe & Central Asia | 9.91111579 | 5 |
+| Netherlands | Europe & Central Asia | 9.70224737 | 6 |
+| Denmark | Europe & Central Asia | 9.70204737 | 7 |
+| Sweden | Europe & Central Asia | 9.43733684 | 8 |
+| Portugal | Europe & Central Asia | 9.42996316 | 9 |
+| United Kingdom | Europe & Central Asia | 9.26078421 | 10 |
+| Norway | Europe & Central Asia | 9.09031579 | 11 |
+| Bosnia and Herzegovina | Europe & Central Asia | 8.95115789 | 12 |
+| Moldova | Europe & Central Asia | 8.79665263 | 13 |
+| Finland | Europe & Central Asia | 8.78487368 | 14 |
+| Serbia | Europe & Central Asia | 8.70704737 | 15 |
+| Iceland | Europe & Central Asia | 8.57859474 | 16 |
+| Italy | Europe & Central Asia | 8.51157895 | 17 |
+| Spain | Europe & Central Asia | 8.44842105 | 18 |
+| Greece | Europe & Central Asia | 8.44731053 | 19 |
+| Montenegro | Europe & Central Asia | 8.33840000 | 20 |
+| Armenia | Europe & Central Asia | 8.30568421 | 21 |
+| Ireland | Europe & Central Asia | 8.25787895 | 22 |
+| Slovenia | Europe & Central Asia | 8.24580000 | 23 |
+| Georgia | Europe & Central Asia | 7.86469474 | 24 |
+| Hungary | Europe & Central Asia | 7.23034737 | 25 |
+| North Macedonia | Europe & Central Asia | 7.13312105 | 26 |
+| Croatia | Europe & Central Asia | 7.08586316 | 27 |
+| Bulgaria | Europe & Central Asia | 7.05770526 | 28 |
+| Ukraine | Europe & Central Asia | 6.71404211 | 29 |
+| Turkmenistan | Europe & Central Asia | 6.66234737 | 30 |
+| Lithuania | Europe & Central Asia | 6.30594737 | 31 |
+| San Marino | Europe & Central Asia | 6.27641053 | 32 |
+| Poland | Europe & Central Asia | 6.20763158 | 33 |
+| Cyprus | Europe & Central Asia | 6.20564211 | 34 |
+| Luxembourg | Europe & Central Asia | 6.18720526 | 35 |
+| Andorra | Europe & Central Asia | 6.02969474 | 36 |
+| Tajikistan | Europe & Central Asia | 5.91194737 | 37 |
+| Latvia | Europe & Central Asia | 5.81412105 | 38 |
+| Estonia | Europe & Central Asia | 5.74512105 | 39 |
+| Albania | Europe & Central Asia | 5.65728333 | 40 |
+| Belarus | Europe & Central Asia | 5.62332632 | 41 |
+| Uzbekistan | Europe & Central Asia | 5.19576842 | 42 |
+| Romania | Europe & Central Asia | 5.13422105 | 43 |
+| Kazakhstan | Europe & Central Asia | 3.18306316 | 44 |
+| Azerbaijan | Europe & Central Asia | 2.92361053 | 45 |
+| Monaco | Europe & Central Asia | 1.96268947 | 46 |
+| Greenland | Europe & Central Asia |  | 47 |
+| Cuba | Latin America & Caribbean | 10.14603158 | 1 |
+| Argentina | Latin America & Caribbean | 8.82137368 | 2 |
+| Brazil | Latin America & Caribbean | 8.46850526 | 3 |
+| Uruguay | Latin America & Caribbean | 8.45995263 | 4 |
+| El Salvador | Latin America & Caribbean | 7.93132105 | 5 |
+| Honduras | Latin America & Caribbean | 7.69480000 | 6 |
+| Chile | Latin America & Caribbean | 7.45270000 | 7 |
+| Costa Rica | Latin America & Caribbean | 7.29868947 |
+
+# **Insight**
+
+**Objective:**
+
+* The query ranks countries within each region based on their average health expenditure (as a percentage of GDP). This helps identify which countries invest the most in healthcare relative to their GDP and how they compare within their respective regions.
+
+**Key Findings:**
+
+* **East Asia & Pacific:**
+Marshall Islands and Tuvalu top the list with average health expenditures of 16.70% and 15.53%, respectively. These small island nations likely face unique healthcare challenges, necessitating higher spending. Developed countries like Japan (9.21%) and Australia (8.57%) also rank high, reflecting their strong healthcare systems.
+
+* **Europe & Central Asia:**
+France leads the region with an average health expenditure of 10.83%, followed closely by Germany (10.75%) and Switzerland (10.30%). These countries are known for their robust healthcare systems and high public spending on health.
+Eastern European countries like Moldova (8.80%) and Serbia (8.71%) also rank relatively high, indicating significant investments in healthcare.
+
+* **Latin America & Caribbean:**
+Cuba tops the region with an average health expenditure of 10.15%, reflecting its well-known public healthcare system. Argentina (8.82%) and Brazil (8.47%) follow, showing substantial investments in healthcare despite economic challenges.
+
+# **Trends**
+
+* **High-Income Countries:** Generally, high-income countries (e.g., France, Germany, Japan) rank high in health expenditure, reflecting their ability to invest more in healthcare infrastructure and services.
+
+* **Small Island Nations:** Countries like Marshall Islands and Tuvalu, despite being small and resource-constrained, allocate a significant portion of their GDP to healthcare, likely due to unique challenges such as geographic isolation and vulnerability to climate change.
+
+* **Regional Disparities:** There are notable disparities within regions. For example, in East Asia & Pacific, while some countries like Japan and Australia spend heavily on healthcare, others like Indonesia (2.67%) and Papua New Guinea (2.43%) lag behind.
+
+# **Limitations:**
+
+* The analysis is based on average health expenditure and does not account for the efficiency or effectiveness of healthcare spending.
+
+* Countries with missing data (e.g., American Samoa, Greenland) are excluded from the rankings, which may skew the results for certain regions.
+
+# **5. Percentage change in CO2 emissions for each country between two specified years.**
+
+**Key Skills Demonstrated:**
+
+* Use of CTE's
+
+| countryname | Year_Current | CO2_Current | Year_Previous | CO2_Previous | % Change in CO2 Emissions |
+|---|---|---|---|---|---|
+| Afghanistan | 2010 | 7110.0001 | 2009 | 4880.0001 | 45.69672038 |
+| Angola | 2010 | 22799.9992 | 2009 | 21149.9996 | 7.80141670 |
+| Albania | 2010 | 4449.9998 | 2009 | 4219.9998 | 5.45023723 |
+| Andorra | 2010 | 520.0000 | 2009 | 520.0000 | 0.00000000 |
+| United Arab Emirates | 2010 | 162789.9933 | 2009 | 157020.0043 | 3.67468402 |
+| Argentina | 2010 | 167220.0012 | 2009 | 156570.0073 | 6.80206515 |
+| Armenia | 2010 | 4340.0002 | 2009 | 4510.0002 | -3.76940116 |
+| American Samoa | 2010 |  | 2009 |  |  |
+| Antigua and Barbuda | 2010 | 490.0000 | 2009 | 1390.0000 | -64.74820144 |
+| Australia | 2010 | 387540.0085 | 2009 | 395290.0085 | -1.96058586 |
+
+# **Insight**
+
+**Significant Changes:**
+
+* **Antigua and Barbuda:** Experienced a dramatic decrease of 64.75% in CO2 emissions. This could be due to a variety of factors, including shifts in energy sources, economic changes, or policy implementations.
+
+* **Afghanistan:** Saw a substantial increase of 45.70% in CO2 emissions. This might indicate economic growth, increased industrial activity, or changes in energy consumption patterns.
+
+**Moderate Changes:**
+
+* **Most other countries:** Showed relatively smaller changes in CO2 emissions, ranging from -3.77% (Armenia) to 7.80% (Angola). These fluctuations could be due to a combination of economic factors, population growth, and energy policies.
+
+**No Data/No Change:**
+
+* **American Samoa:** No data is available for CO2 emissions in either year, making it impossible to assess changes.
+
+* **Andorra:** Had no change in CO2 emissions, suggesting a stable situation in terms of energy use and emissions.
+
+# **General Observations:**
+
+* Variability: The data highlights the significant variability in CO2 emission changes across different countries. This underscores the diverse factors influencing emissions, including economic development, energy sources, and environmental policies.
+
+* Limited Scope: The data only covers a single year-over-year change. To understand broader trends, it would be necessary to analyze data over a longer period.
 
