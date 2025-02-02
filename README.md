@@ -2,15 +2,15 @@
 
 ## Project Overview
 
-This project explores the relationship between various socioeconomic factors and life expectancy using SQL and Python. The goal is to identify key determinants of life expectancy across different countries and regions.
+This project explores the relationship between socioeconomic factors and life expectancy across different countries and regions. Using **SQL** and **Python**, we analyze data from the World Bank and other international organizations to identify key determinants of life expectancy. The analysis includes data cleaning, exploratory data analysis (EDA), statistical modeling, and time series forecasting.
 
 ## Data Source
 
-The data used in this project is from the World Bank and other international organizations, compiled into a CSV file named `final_life_expectancy_dataset.csv`.  It includes information on life expectancy, prevalence of undernourishment, CO2 emissions, health expenditure, education expenditure, unemployment, sanitation, injuries, communicable diseases, non-communicable diseases, and income group for various countries over several years.
+The dataset used in this project is sourced from the World Bank and other international organizations. It includes information on life expectancy, health expenditure, education expenditure, CO2 emissions, and other socioeconomic indicators. The data is available in a CSV file named `final_life_expectancy_dataset.csv`.
 
 ## Data Analysis
 
-The analysis was conducted using both SQL (MySQL) and Python.  The following steps were taken:
+The analysis was conducted using **Python** for data cleaning, visualization, and statistical modeling, and **SQL** for database management and querying. Below is a summary of the key steps:
 
 ### 1. Data Cleaning and Preprocessing (Python)
 
@@ -848,3 +848,32 @@ Cuba tops the region with an average health expenditure of 10.15%, reflecting it
 * General Health and Development: The categorization provides a quick and easy way to understand the general health and development status of countries. Countries in the 'High' category likely have better healthcare systems, nutrition, and overall living conditions compared to those in the 'Low' category.
 
 * Potential Outliers:  It's interesting to note that some countries like Angola and Antigua and Barbuda are categorized as 'High' despite potentially facing economic or development challenges. This could indicate areas for further investigation to understand the factors contributing to their higher life expectancy.
+
+---
+## Conclusion
+
+This project highlights the importance of socioeconomic factors in determining life expectancy. The analysis reveals that investments in health and education, along with improved sanitation and reduced undernourishment, are critical for increasing life expectancy. Future work could explore causal relationships and the impact of specific policies on life expectancy.
+
+## Tools and Technologies
+
+- **Python Libraries:** Pandas, NumPy, Seaborn, Matplotlib, Scikit-learn, Statsmodels
+- **SQL:** MySQL
+- **Data Visualization:** Matplotlib, Seaborn
+ 
+---
+
+## How to Run the Code
+
+**1. Clone the repository:**
+   ```bash
+   git clone https://github.com/ssmujtaba/socioeconomic_determinants
+
+**2. Install the required Python libraries:**
+pip install -r requirements.txt
+
+**3. Run the Jupyter Notebook for Python analysis:**
+jupyter notebook analysis.ipynb
+
+4. Execute the SQL scripts in your MySQL environment.
+
+5. Python and SQL code files have also been uploaded for you to download them.
